@@ -20,8 +20,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import rx.Observable;
+import rx.functions.Action0;
+import rx.functions.Action1;
 import rx.functions.Func0;
 import rx.functions.Func1;
 import rx.functions.Func2;
@@ -33,6 +37,7 @@ import rx.functions.Func7;
 import rx.functions.Func8;
 import rx.functions.Func9;
 import rx.functions.FuncN;
+import rx.schedulers.Schedulers;
 
 public class RxMemoizationTest {
     private static final MyObject INSTANCE = new MyObject();
@@ -55,9 +60,33 @@ public class RxMemoizationTest {
                 return INSTANCE;
             }
         });
-        Assert.assertEquals(INSTANCE, memoized.call());
-        Assert.assertEquals(INSTANCE, memoized.call());
-        Assert.assertEquals(INSTANCE, memoized.call());
+        /* Extra tests on memoize for func0 to check the double locking implementation is solid */
+        final int threadCount = 10000;
+        final int maxDelay = 100;
+        Iterable<Observable<Long>> observableList = Observable.range(0, threadCount)
+                .map(new Func1<Integer, Observable<Long>>() {
+                    @Override
+                    public Observable<Long> call(final Integer integer) {
+                        return Observable
+                                .timer((long)(Math.random() * maxDelay), TimeUnit.MILLISECONDS)
+                                .doOnCompleted(new Action0() {
+                                    @Override
+                                    public void call() {
+                                        System.out.println("Test-" + integer);
+                                    }
+                                }).doOnNext(new Action1<Long>() {
+                                    @Override
+                                    public void call(Long aLong) {
+                                        memoized.call();
+                                    }
+                                }).subscribeOn(Schedulers.newThread());
+                    }
+                }).toList().toBlocking().first();
+        Observable.merge(observableList).toBlocking().forEach(new Action1<Long>() {
+            @Override
+            public void call(Long o) {
+            }
+        });
         Assert.assertEquals(1, count.get());
     }
 

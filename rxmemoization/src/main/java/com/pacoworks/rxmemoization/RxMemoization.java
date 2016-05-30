@@ -52,10 +52,18 @@ public final class RxMemoization {
      * @return function caching results
      */
     public static <R> Func0<R> memoize(final Func0<R> func0) {
-        final R value = func0.call();
         return new Func0<R>() {
+            private R value;
+
             @Override
             public R call() {
+                if (null == value) {
+                    synchronized (this) {
+                        if (null == value) {
+                            value = func0.call();
+                        }
+                    }
+                }
                 return value;
             }
         };
