@@ -4,13 +4,13 @@ RxMemoization is a library to allow [memoization](https://en.wikipedia.org/wiki/
 
 ##Rationale
 
-Memoization stores the results of a function for the same set of parameters, which makes it useful for caching functions that are called often for a small set of parameters.
+Memoization stores the results of a function for the same set of parameters, which makes it useful for caching functions that are called often with the same parameters.
 
 Storage scales linearly inside a `HashMap`, and it gets garbage collected when the function goes out of scope.
 
 ##Usage
 
-RxMemoization contains one classes, with a set of `memoize()` methods to do memoization for any FuncN from Func0 to Func9.
+`RxMemoization` contains one class with a set of `memoize()` methods to do memoization for any FuncN from Func0 to Func9.
 
 ```java
 AtomicInteger count = new AtomicInteger(0);
@@ -31,7 +31,7 @@ parser.call(1); // Integer@335A8B
 parser.call(4); // Integer@564E21
 parser.call(0); // Integer@65E46F
 
-// count.get() is 3 due to parameters 0, 1 and 0
+// count.get() is 3 due to parameters 0, 1 and 4
 ```
 
 ##Distribution
