@@ -262,19 +262,24 @@ public class RxMemoizationTest {
                                 + integer6 + integer7 + integer8);
                     }
                 });
+        // +1
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0));
+        // +1
         Assert.assertEquals(INSTANCES.get(1), memoized.call(0, 0, 0, 0, 0, 0, 0, 1));
         Assert.assertEquals(INSTANCES.get(1), memoized.call(0, 0, 0, 0, 0, 0, 0, 1));
         Assert.assertEquals(INSTANCES.get(1), memoized.call(0, 0, 0, 0, 0, 0, 0, 1));
-        Assert.assertEquals(INSTANCES.get(30), memoized.call(0, 0, 15, 0, 0, 0, 0, 15));
-        Assert.assertEquals(INSTANCES.get(30), memoized.call(0, 0, 15, 0, 0, 0, 0, 15));
+        // +1
+        Assert.assertEquals(INSTANCES.get(45), memoized.call(15, 0, 15, 0, 0, 0, 0, 15));
+        // +1
+        Assert.assertEquals(INSTANCES.get(45), memoized.call(0, 15, 15, 0, 0, 0, 0, 15));
+        // +1
         Assert.assertEquals(INSTANCES.get(30), memoized.call(0, 0, 15, 0, 0, 0, 0, 15));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0));
-        Assert.assertEquals(3, count.get());
+        Assert.assertEquals(5, count.get());
     }
 
     @Test
@@ -291,19 +296,24 @@ public class RxMemoizationTest {
                                 + integer6 + integer7 + integer8 + integer9);
                     }
                 });
+        // +1
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 0));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 0));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 0));
+        // +1
         Assert.assertEquals(INSTANCES.get(1), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 1));
         Assert.assertEquals(INSTANCES.get(1), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 1));
         Assert.assertEquals(INSTANCES.get(1), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 1));
-        Assert.assertEquals(INSTANCES.get(30), memoized.call(0, 0, 15, 0, 0, 0, 0, 0, 15));
-        Assert.assertEquals(INSTANCES.get(30), memoized.call(0, 0, 15, 0, 0, 0, 0, 0, 15));
+        // +1
+        Assert.assertEquals(INSTANCES.get(30), memoized.call(15, 0, 0, 0, 0, 0, 0, 0, 15));
+        // +1
+        Assert.assertEquals(INSTANCES.get(30), memoized.call(0, 15, 0, 0, 0, 0, 0, 0, 15));
+        // +1
         Assert.assertEquals(INSTANCES.get(30), memoized.call(0, 0, 15, 0, 0, 0, 0, 0, 15));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 0));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 0));
         Assert.assertEquals(INSTANCES.get(0), memoized.call(0, 0, 0, 0, 0, 0, 0, 0, 0));
-        Assert.assertEquals(3, count.get());
+        Assert.assertEquals(5, count.get());
     }
 
     @Test
