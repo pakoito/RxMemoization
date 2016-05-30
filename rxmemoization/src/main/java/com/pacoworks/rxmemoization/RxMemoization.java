@@ -17,8 +17,8 @@
 package com.pacoworks.rxmemoization;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import rx.functions.Func0;
 import rx.functions.Func1;
@@ -76,7 +76,7 @@ public final class RxMemoization {
      * @return function caching results
      */
     public static <A, R> Func1<A, R> memoize(final Func1<A, R> func1) {
-        final Map<A, R> results = new HashMap<A, R>();
+        final Map<A, R> results = new ConcurrentHashMap<A, R>();
         return new Func1<A, R>() {
             @Override
             public R call(A a) {
@@ -99,7 +99,7 @@ public final class RxMemoization {
      * @return function caching results
      */
     public static <A, B, R> Func2<A, B, R> memoize(final Func2<A, B, R> func2) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new Func2<A, B, R>() {
             @Override
             public R call(A a, B b) {
@@ -123,7 +123,7 @@ public final class RxMemoization {
      * @return function caching results
      */
     public static <A, B, C, R> Func3<A, B, C, R> memoize(final Func3<A, B, C, R> func3) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new Func3<A, B, C, R>() {
             @Override
             public R call(A a, B b, C c) {
@@ -147,7 +147,7 @@ public final class RxMemoization {
      * @return function caching results
      */
     public static <A, B, C, D, R> Func4<A, B, C, D, R> memoize(final Func4<A, B, C, D, R> func4) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new Func4<A, B, C, D, R>() {
             @Override
             public R call(A a, B b, C c, D d) {
@@ -172,7 +172,7 @@ public final class RxMemoization {
      */
     public static <A, B, C, D, E, R> Func5<A, B, C, D, E, R> memoize(
             final Func5<A, B, C, D, E, R> func5) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new Func5<A, B, C, D, E, R>() {
             @Override
             public R call(A a, B b, C c, D d, E e) {
@@ -197,7 +197,7 @@ public final class RxMemoization {
      */
     public static <A, B, C, D, E, F, R> Func6<A, B, C, D, E, F, R> memoize(
             final Func6<A, B, C, D, E, F, R> func6) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new Func6<A, B, C, D, E, F, R>() {
             @Override
             public R call(A a, B b, C c, D d, E e, F f) {
@@ -222,7 +222,7 @@ public final class RxMemoization {
      */
     public static <A, B, C, D, E, F, G, R> Func7<A, B, C, D, E, F, G, R> memoize(
             final Func7<A, B, C, D, E, F, G, R> func7) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new Func7<A, B, C, D, E, F, G, R>() {
             @Override
             public R call(A a, B b, C c, D d, E e, F f, G g) {
@@ -247,7 +247,7 @@ public final class RxMemoization {
      */
     public static <A, B, C, D, E, F, G, H, R> Func8<A, B, C, D, E, F, G, H, R> memoize(
             final Func8<A, B, C, D, E, F, G, H, R> func8) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new Func8<A, B, C, D, E, F, G, H, R>() {
             @Override
             public R call(A a, B b, C c, D d, E e, F f, G g, H h) {
@@ -272,7 +272,7 @@ public final class RxMemoization {
      */
     public static <A, B, C, D, E, F, G, H, I, R> Func9<A, B, C, D, E, F, G, H, I, R> memoize(
             final Func9<A, B, C, D, E, F, G, H, I, R> func9) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new Func9<A, B, C, D, E, F, G, H, I, R>() {
             @Override
             public R call(A a, B b, C c, D d, E e, F f, G g, H h, I i) {
@@ -296,7 +296,7 @@ public final class RxMemoization {
      * @return function caching results
      */
     public static <R> FuncN<R> memoize(final FuncN<R> funcN) {
-        final Map<ArgStorage, R> results = new HashMap<ArgStorage, R>();
+        final Map<ArgStorage, R> results = new ConcurrentHashMap<ArgStorage, R>();
         return new FuncN<R>() {
             @Override
             public R call(Object... objects) {
