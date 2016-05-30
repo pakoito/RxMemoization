@@ -20,19 +20,19 @@ Func1<String, Integer> parser =
 
 // All the results for the same parameter correspond to the same object
 
+parser.call("0"); // Integer@65E46F
 // Log: "0"
 parser.call("0"); // Integer@65E46F
 parser.call("0"); // Integer@65E46F
-parser.call("0"); // Integer@65E46F
+parser.call("1"); // Integer@335A8B
 // Log: "1"
-parser.call("1"); // Integer@335A8B
-// Log: "4"
 parser.call("4"); // Integer@564E21
+// Log: "4"
 parser.call("1"); // Integer@335A8B
 parser.call("4"); // Integer@564E21
 parser.call("0"); // Integer@65E46F
-// Log: "2"
 parser.call("2"); // Integer@564E21
+// Log: "2"
 ```
 
 ##Distribution
