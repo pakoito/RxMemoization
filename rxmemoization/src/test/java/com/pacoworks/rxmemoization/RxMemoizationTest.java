@@ -69,15 +69,19 @@ public class RxMemoizationTest {
                     public Observable<Long> call(final Integer integer) {
                         return Observable
                                 .timer((long)(Math.random() * maxDelay), TimeUnit.MILLISECONDS)
-                                .doOnCompleted(new Action0() {
-                                    @Override
-                                    public void call() {
-                                        System.out.println("Test-" + integer);
-                                    }
-                                }).doOnNext(new Action1<Long>() {
+                                .doOnNext(new Action1<Long>() {
                                     @Override
                                     public void call(Long aLong) {
                                         memoized.call();
+                                        memoized.call();
+                                        memoized.call();
+                                        memoized.call();
+                                        memoized.call();
+                                    }
+                                }).doOnCompleted(new Action0() {
+                                    @Override
+                                    public void call() {
+                                        System.out.println("Test-" + integer);
                                     }
                                 }).subscribeOn(Schedulers.newThread());
                     }
