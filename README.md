@@ -47,7 +47,7 @@ repositories {
     
 dependencies {
     ...
-    compile 'com.github.pakoito:RxMemoization:1.0.0'
+    compile 'com.github.pakoito:RxMemoization:1.1.0'
     ...
 }
 ```
@@ -64,7 +64,7 @@ or to your `pom.xml`
 <dependency>
     <groupId>com.github.pakoito</groupId>
     <artifactId>RxMemoization</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
