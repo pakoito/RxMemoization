@@ -316,8 +316,11 @@ public final class RxMemoization {
     private static final class ArgStorage {
         private final Object[] storage;
 
+        private final int hashCode;
+
         ArgStorage(Object... storage) {
             this.storage = storage;
+            this.hashCode = Arrays.hashCode(this.storage);
         }
 
         @Override
@@ -332,7 +335,7 @@ public final class RxMemoization {
 
         @Override
         public int hashCode() {
-            return Arrays.hashCode(storage);
+            return hashCode;
         }
     }
 }
