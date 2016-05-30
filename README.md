@@ -4,9 +4,9 @@ RxMemoization is a library to allow [memoization](https://en.wikipedia.org/wiki/
 
 ##Rationale
 
-Memoization stores the results of a function for the same set of parameters, which makes it useful for caching functions that are called often with the same parameters.
+Memoization stores the results of a function for the same set of parameters, which makes it useful for caching heavy computations that are called often with the same values.
 
-Storage scales linearly inside a `HashMap`, and it gets garbage collected when the function goes out of scope.
+Storage scales linearly inside a `HashMap`, and it gets garbage collected when the function object goes out of scope.
 
 ##Usage
 
