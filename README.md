@@ -2,6 +2,8 @@
 
 RxMemoization is a library to allow [memoization](https://en.wikipedia.org/wiki/Memoization) on RxJava function primitives.
 
+For the RxJava 2.X version please go to [RxMemoization2](https://github.com/pakoito/RxMemoization2).
+
 ##Rationale
 
 Memoization stores the results of a function for the same set of parameters, which makes it useful for caching heavy computations that are called often with the same values.
