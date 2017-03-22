@@ -4,13 +4,13 @@ RxMemoization is a library to allow [memoization](https://en.wikipedia.org/wiki/
 
 For the RxJava 2.X version please go to [RxMemoization2](https://github.com/pakoito/RxMemoization2).
 
-##Rationale
+## Rationale
 
 Memoization stores the results of a function for the same set of parameters, which makes it useful for caching heavy computations that are called often with the same values.
 
 Storage scales linearly inside a `ConcurrentHashMap`, and it gets garbage collected when the function object goes out of scope. Caching is thread safe but a calculation can very rarely happen twice due to [`ConcurrentHashMap`](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentHashMap.html) limitations. 
 
-##Usage
+## Usage
 
 `RxMemoization` contains one class with a set of `memoize()` methods to do memoization for any FuncN from Func0 to Func9.
 
@@ -37,7 +37,7 @@ parser.call("2"); // Integer@564E21
 // Log: "2"
 ```
 
-##Distribution
+## Distribution
 
 Add as a dependency to your `build.gradle`
 ```groovy
@@ -70,7 +70,7 @@ or to your `pom.xml`
 </dependency>
 ```
 
-##License
+## License
 
 Copyright (c) pakoito 2016
 
